@@ -24,7 +24,7 @@
 <!--        <property name="volume" value="70"/>-->
 <!--    </bean>-->
 
-    <bean id="musicListBean" class="group_id_test.MusicPlayer">
+    <bean id="musicListBean" class="group_id_test.MusicPlayer" scope="singleton">
         <property name="musicList">
             <list>
                 <ref bean="alt_musicBean"/>
