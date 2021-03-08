@@ -8,23 +8,36 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="classic_musicBean"
-          class="group_id_test.ClassicalMusic">
+          class="group_id_test.ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy"
+          factory-method="getClassicalMusic">
     </bean>
+
     <bean id="rock_musicBean"
           class="group_id_test.RockMusic">
     </bean>
+
     <bean id="alt_musicBean"
           class="group_id_test.AlternativeMusic">
     </bean>
+
+    <bean id="musicBean"
+          class="group_id_test.MusicPlayer"
+          scope="prototype"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
+        <property name="music" ref="classic_musicBean"/>
+    </bean>
+
 <!--    <bean id="musicPlayer"-->
 <!--          class="group_id_test.MusicPlayer">-->
 <!--        <property name="music" ref="musicBean"/>-->
-
 <!--        <property name="name" value="some_name"/>-->
 <!--        <property name="volume" value="70"/>-->
 <!--    </bean>-->
 
-    <bean id="musicListBean" class="group_id_test.MusicPlayer">
+    <bean id="musicListBean" class="group_id_test.MusicPlayer" scope="singleton">
         <property name="musicList">
             <list>
                 <ref bean="alt_musicBean"/>
@@ -33,6 +46,5 @@
             </list>
         </property>
     </bean>
-
 
 </beans>
