@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="classic_musicBean"
+          class="group_id_test.ClassicalMusic">
+    </bean>
+    <bean id="rock_musicBean"
+          class="group_id_test.RockMusic">
+    </bean>
+    <bean id="alt_musicBean"
+          class="group_id_test.AlternativeMusic">
+    </bean>
+<!--    <bean id="musicPlayer"-->
+<!--          class="group_id_test.MusicPlayer">-->
+<!--        <property name="music" ref="musicBean"/>-->
+
+<!--        <property name="name" value="some_name"/>-->
+<!--        <property name="volume" value="70"/>-->
+<!--    </bean>-->
+
+    <bean id="musicListBean" class="group_id_test.MusicPlayer">
+        <property name="musicList">
+            <list>
+                <ref bean="alt_musicBean"/>
+                <ref bean="classic_musicBean"/>
+                <ref bean="rock_musicBean"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
